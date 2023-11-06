@@ -9,6 +9,7 @@ const workoutRoutes = require('./routes/workouts');
 const app = express();
 
 // Create a middleware to get requests details
+app.use(express.json());
 app.use((req, res, next) => {
 	console.log(req.path, req.method);
 	next();
