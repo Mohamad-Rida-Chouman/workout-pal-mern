@@ -15,5 +15,10 @@ router.get('/:id', (req, res) => {
 	res.json({ message: 'Get a single workout' });
 });
 
+// Post a workout
+router.post('/', (req, res) => {
+	res.json({ message: 'Post a new workout' });
+});
+
 // Export routes
 module.exports = router;
