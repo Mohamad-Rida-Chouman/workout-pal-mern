@@ -20,5 +20,10 @@ router.post('/', (req, res) => {
 	res.json({ message: 'Post a new workout' });
 });
 
+// Delete a workout
+router.delete('/:id', (req, res) => {
+	res.json({ message: 'Deleted the workout' });
+});
+
 // Export routes
 module.exports = router;
