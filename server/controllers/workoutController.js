@@ -52,4 +52,5 @@ module.exports = {
 	getWorkouts,
 	getSingleWorkout,
 	createWorkout,
+	deleteWorkout,
 };
