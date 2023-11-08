@@ -8,6 +8,14 @@ const getWorkouts = async (req, res) => {
 };
 
 // Function to get a single workout
+const getSingleWorkout = async (req, res) => {
+	const { id } = req.params;
+	const singleWorkout = await Workout.findById(id);
+	if (!singleWorkout) {
+		return res.status(404).json({ error: 'Workout not found!' });
+	}
+	res.status(200).json(singleWorkout);
+};
 
 // Function to create a workout
 const createWorkout = async (req, res) => {
@@ -27,5 +35,6 @@ const createWorkout = async (req, res) => {
 // Export module
 module.exports = {
 	getWorkouts,
+	getSingleWorkout,
 	createWorkout,
 };
