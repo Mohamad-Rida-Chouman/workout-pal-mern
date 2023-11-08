@@ -1,5 +1,6 @@
 // Required package
 const Workout = require('../models/workoutModel');
+const mongoose = require('mongoose');
 
 // Function to get all workouts
 const getWorkouts = async (req, res) => {
@@ -10,6 +11,9 @@ const getWorkouts = async (req, res) => {
 // Function to get a single workout
 const getSingleWorkout = async (req, res) => {
 	const { id } = req.params;
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(404).json({ error: 'Workout not found!' });
+	}
 	const singleWorkout = await Workout.findById(id);
 	if (!singleWorkout) {
 		return res.status(404).json({ error: 'Workout not found!' });
@@ -31,6 +35,17 @@ const createWorkout = async (req, res) => {
 // Function to update a workout
 
 // Function to delete a workout
+const deleteWorkout = async (req, res) => {
+	const { id } = req.params;
+	if (!mongoose.Types.ObjectId.isValid(id)) {
+		return res.status(404).json({ error: 'Workout not found!' });
+	}
+	const deleteWorkout = await Workout.findOneAndDelete({ _id: id });
+	if (!deleteWorkout) {
+		return res.status(404).json({ error: 'Workout not found!' });
+	}
+	res.status(200).json(deleteWorkout);
+};
 
 // Export module
 module.exports = {
