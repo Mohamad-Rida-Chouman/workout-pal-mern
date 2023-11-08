@@ -2,6 +2,10 @@
 const Workout = require('../models/workoutModel');
 
 // Function to get all workouts
+const getWorkouts = async (req, res) => {
+	const workouts = await Workout.find({}).sort({ createdAt: -1 });
+	res.status(200).json(workouts);
+};
 
 // Function to get a single workout
 
@@ -22,5 +26,6 @@ const createWorkout = async (req, res) => {
 
 // Export module
 module.exports = {
+	getWorkouts,
 	createWorkout,
 };
