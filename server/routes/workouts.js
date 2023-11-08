@@ -1,16 +1,17 @@
 // Required Packages
 const express = require('express');
 const Workout = require('../models/workoutModel');
-const { createWorkout } = require('../controllers/workoutController');
+const {
+	getWorkouts,
+	createWorkout,
+} = require('../controllers/workoutController');
 
 // Setup express router
 const router = express.Router();
 
 // Setup routes
 // Get all workouts
-router.get('/', (req, res) => {
-	res.json({ message: 'Get all workouts' });
-});
+router.get('/', getWorkouts);
 
 // Get single workout details
 router.get('/:id', (req, res) => {
