@@ -15,7 +15,7 @@ const WorkoutForm = () => {
 		const workout = { title, load, reps }; // Variable that contains the details to be posted
 		const response = await fetch('/api/workouts', {
 			// Fetching route
-			method: POST,
+			method: 'POST',
 			body: JSON.stringify(workout),
 			headers: {
 				'Content-Type': 'application/json',
