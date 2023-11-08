@@ -14,7 +14,10 @@ const Home = () => {
 	}, []);
 	return (
 		<div className="home">
-			<h2>Home</h2>
+			<div className="workouts">
+				{workouts &&
+					workouts.map((workout) => <p key={workout._id}>{workout.title}</p>)}
+			</div>
 		</div>
 	);
 };
