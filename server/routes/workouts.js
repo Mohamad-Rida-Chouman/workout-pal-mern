@@ -3,6 +3,7 @@ const express = require('express');
 const Workout = require('../models/workoutModel');
 const {
 	getWorkouts,
+	getSingleWorkout,
 	createWorkout,
 } = require('../controllers/workoutController');
 
@@ -14,9 +15,7 @@ const router = express.Router();
 router.get('/', getWorkouts);
 
 // Get single workout details
-router.get('/:id', (req, res) => {
-	res.json({ message: 'Get a single workout' });
-});
+router.get('/:id', getSingleWorkout);
 
 // Post a workout
 router.post('/', createWorkout);
